@@ -1,0 +1,8 @@
+(* parallelCannyEdge.mlb *)
+
+local
+  $(SML_LIB)/basis/basis.mlb
+  ForkJoin.smlnj.sml
+in
+  parallelCannyEdge.sml
+end
