@@ -2,7 +2,7 @@
 
 This project implements parallel image processing algorithms in Standard ML using MPL (MaPLe).
 
-## Key Files (Most Important Code)
+## Key Files
 
 ### Edge Detection - Canny Algorithm
 | File | Description |
@@ -193,4 +193,5 @@ Change the number of processors using the `@mpl procs N` flag:
 ### K-Means Segmentation
 - Most compute-intensive (O(N * K * iterations))
 - Large images: ~15-20x+ speedup expected
+
 
