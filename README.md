@@ -2,6 +2,35 @@
 
 This project implements parallel image processing algorithms in Standard ML using MPL (MaPLe).
 
+## Key Files (Most Important Code)
+
+### Edge Detection - Canny Algorithm
+| File | Description |
+|------|-------------|
+| `CannySeq.sml` | **Core sequential implementation** - Full Canny pipeline (Blur → Sobel → NMS → Threshold → Hysteresis) |
+| `CannyPar.sml` | **Core parallel implementation** - Same pipeline parallelized using `Parallel.parfor` with chunked workers |
+| `CannyBenchmark.sml` | Benchmark comparing Seq vs Par with timing and speedup measurements |
+| `CannyCorrectness.sml` | Verifies parallel output matches sequential (pixel-by-pixel comparison) |
+
+### Image Segmentation - Otsu Thresholding
+| File | Description |
+|------|-------------|
+| `ThresholdSeq.sml` | **Core sequential Otsu** - Histogram computation + between-class variance optimization |
+| `ThresholdPar.sml` | **Core parallel Otsu** - Uses `Parallel.reduce` for histogram and threshold search |
+| `BenchmarkMax.sml` | **Best optimized benchmark** - Local histograms per worker + sequential merge |
+
+### Image Segmentation - K-Means Clustering
+| File | Description |
+|------|-------------|
+| `KMeansSeq.sml` | **Core sequential K-Means** - Iterative centroid assignment and update |
+| `KMeansPar.sml` | **Core parallel K-Means** - Per-worker accumulators with parallel merge |
+| `KMeansBenchmark.sml` | Full benchmark with worker scaling and K-value scaling experiments |
+
+### Correctness Testing
+| File | Description |
+|------|-------------|
+| `CorrectnessTest.sml` | Tests both Otsu and K-Means (Seq vs Par comparison) |
+
 ## Project Structure
 
 ```
